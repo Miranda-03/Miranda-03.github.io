@@ -58,14 +58,16 @@ span{
 }
 
 h2{
-    font-family: sans-serif;
+    font-family: Arial;
+    font-weight: bold;
     font-size: 17pt;
     font-variant-caps: normal;
 }
 
 h1{
     font-size: 26pt;
-    font-family: sans-serif;
+    font-family: Arial;
+    font-weight: bold;
 }
 
 #principio{
@@ -81,7 +83,7 @@ h1{
 #principio h1{
     margin-top: 80px;
     position: absolute;
-    background-image: linear-gradient(90deg, #5af067, #27c5f5, #5af067);
+    background-image: linear-gradient(90deg, #9bf6f9, #44def7, #6ee1e4);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; 
@@ -106,6 +108,8 @@ h1{
     margin-top: 34px;
     float: right;
     margin-right: 11%;
+    filter: hue-rotate(
+25deg);
 }
 
 #trabajos{
@@ -143,7 +147,7 @@ h1{
 #enunciado{
     border-style: none;
     width: 100%;
-    height: 170px;
+    height: 180px;
 }
 
 nav{
@@ -151,7 +155,13 @@ nav{
     background-color: #1f1f1fdb;
 }
 
-label{
+label {
+    position: relative;
+    border: none;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
     font-family: Arial;
     font-size: 30px;
     color: white;
@@ -163,8 +173,25 @@ label{
     user-select: none;
 }
 
-
-
+label:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  label:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
 
 #listaEjercicios{
     background-color: #0d1a28;
@@ -275,19 +302,22 @@ label{
     transform: scale(0.5);
 }
 
-.boot-btn{
-    width: 190px;
-    height: fit-content;
-    position: absolute;
-    margin-top: 170px;
-    margin-left: 2%;
-    background-color: rgba(17, 25, 40, 0.75);
+#head-menu{
     display: inline-flex;
     align-content: center;
     justify-content: center;
+}
+
+.boot-btn{
+    width: 230px;
+    height: fit-content;
+    margin-top: 170px;
+    margin-left: 2%;
+    background-color: rgba(17, 25, 40, 0.75);
     padding: 7px 7px;
     border-radius: 0px 0px 20px 20px;
     cursor: auto;
+    justify-content: center;
 }
 
 .boot-btn svg{
@@ -300,8 +330,160 @@ label{
     width: initial;
     margin-left: 10px;
     color: #563d7c;
+    z-index: 1;
 }
 
 .boot-btn a:hover{
     text-decoration: underline;
+}
+
+.efectos-label{
+    width: 170px;
+    height: 34px;
+    margin-top: 170px;
+    margin-left: 5%;
+    background-color: rgba(17, 25, 40, 0.75);
+    padding: 7px 7px;
+    border-radius: 0px 0px 20px 20px;
+    cursor: pointer;
+    justify-content: center;
+    transition-duration: 0.4s;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.efectos-label:hover{
+    color: #27c5f5;
+}
+
+
+.efectos-label:hover .efectos-p-salir{
+    color: red;
+}
+
+.efectos-menu{
+    width: 0;
+    height: 150px;
+    position: absolute;
+    background-color: #07686b63;
+    border-radius: 10px;
+    left: 50%;
+    transform: translate(-50%, 10px);
+    transition: all 0.4s;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+p{
+    margin: 0;
+    width: max-content;
+}
+
+.efectos-label svg{
+    width: 30px;
+    height: 30px;
+    display:block;
+}
+  
+#efectos-check{
+    display: none;
+}
+
+.efectos-p-salir{
+    display: none;
+}
+
+.efectos-p{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 10px;
+    color: #7ac3f7;
+}
+
+.efectos-elementos{
+    color: white;
+    list-style: none;
+    display: inline-flex;
+    padding-left: 0px;
+}
+
+.efectos-elementos li{
+    margin-right: 7px;
+    padding: 4px 7px 4px 7px;
+    background-color: #0c1622;
+    border-radius: 5px;
+    font-size: 15pt;
+    font-family: Arial;
+    font-weight: normal;
+    cursor: default;
+    user-select: none
+}
+
+.efectos-elementos li:last-child{
+    margin-right: 0;
+}
+
+#efectos-ingresar{
+    border-radius: 5px;
+    outline: none;
+    border-style: none;
+    width: 140px;
+    height: 24px;
+    text-align: center;
+}
+
+#efectos-boton{
+    padding: 6px 13px 6px 13px;
+    border-style: none;
+    outline: none;
+    background-color: #0ebcc2;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 12pt;
+    cursor: pointer;
+    position: relative;
+}
+
+.efectos-botones{
+    display: inline-flex;
+    padding-left: 0;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.efectos-botones input:first-child{
+    margin-right: 7px;
+}
+
+#efectos-boton:hover{
+    background-color: #0aa5aa;
+}
+
+#efectos-boton:active{
+    color: #5af067;
+}
+
+input[id="efectos-check"]:checked ~ .efectos-label .efectos-p{
+    display: none;
+}
+
+input[id="efectos-check"]:checked ~ .efectos-label .efectos-p-salir{
+    display: block;
+}
+
+input[id="efectos-check"]:checked ~ .efectos-label{
+    width: 70px;
+}
+
+input[id="efectos-check"]:checked ~ .efectos-label svg{
+    display: none;
+}
+
+input[id="efectos-check"]:checked ~ .efectos-menu{
+    width: 300px;
 }
