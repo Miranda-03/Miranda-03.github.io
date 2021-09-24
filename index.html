@@ -4,6 +4,7 @@
         <link rel="icon" type="image/xcf" href="recursos/mw.png">
         <link rel="stylesheet" type="text/css" href="estilos.css">
         <meta charset = "utf-8">
+        <script src="recursos/jquery-3.6.0.js"></script>
     </head>
 
     <body>
@@ -107,13 +108,13 @@
                 <div class="efectos-menu">
                     <ul class="efectos-elementos">
                         <li>img</li>
-                        <li>ul</li>
-                        <li>input</li>
+                        <li>iframe</li>
+                        <li>label</li>
                     </ul>
                     <input type="text" id="efectos-ingresar" placeholder="ingrese elemento">
                     <ul class="efectos-botones">
-                        <input type="button" id="efectos-boton" value="Ocultar">
-                        <input type="button" id="efectos-boton" value="Empezar de nuevo">
+                        <input type="button" class="efectos-boton" id="boton-ocultar" value="Ocultar">
+                        <input type="button" class="efectos-boton" id="boton-nuevo" value="Empezar de nuevo">
                     </ul>
                 
                 </div>
@@ -245,7 +246,35 @@
             });
         </script>
 
-<script type="text/javascript" src="recursos/efectos-jQuery.js"></script>
 <script type="text/javascript" src="script.js"></script>
+
+<script>
+    $(document).ready(function() {
+
+        let toggleBotonOcultar = true;
+        $("#boton-ocultar").click(function(){
+            let ElementoElegido = $("#efectos-ingresar").val().toLowerCase();
+            if(ElementoElegido == "img" || ElementoElegido == "iframe" || ElementoElegido == "label"){
+                $("#efectos-ingresar").css("border","0");
+                $(ElementoElegido).fadeToggle("slow");
+                if($(ElementoElegido).is(":hidden")){
+                    $("#boton-ocultar").val("Ocultar")
+                }
+                else{  
+                    $("#boton-ocultar").val("Mostrar")  
+                }
+            }
+            else{
+                $("#efectos-ingresar").css("border","1px solid red");
+            }
+        });
+
+        $("#boton-nuevo").click(function(){
+            $("img").fadeIn("slow");
+            $("iframe").slideUp("slow");
+            $("div").animate({ width: '0%' });
+        });
+    });
+</script>
 
 </html>
