@@ -434,9 +434,10 @@ p{
     width: 140px;
     height: 24px;
     text-align: center;
+    text-transform:capitalize;
 }
 
-#efectos-boton{
+.efectos-boton{
     padding: 6px 13px 6px 13px;
     border-style: none;
     outline: none;
